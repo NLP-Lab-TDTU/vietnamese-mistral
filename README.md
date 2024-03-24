@@ -50,6 +50,14 @@ bash scripts/download_datasets.sh
 
 ## Step 2. Combine and tokenize dataset
 
+After combining dataset and tokenize, the results will be saved at ./processed_data
+
 ```bash
 python scripts/combine_and_tokenize_dataset.py
+```
+
+## Step 3. Training
+
+```bash
+bash scripts/run_mistral_7b_8k.sh
 ```
