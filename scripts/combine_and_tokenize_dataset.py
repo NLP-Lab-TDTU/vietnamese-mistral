@@ -30,33 +30,33 @@ def apply_chat_template(sample):
         return {'text': ''}
 
 datanames = [
-    # "CC-MAIN-2023-50",
-    # "CC-MAIN-2023-40",
-    # "CC-MAIN-2023-23",
-    # "CC-MAIN-2023-14",
-    # "CC-MAIN-2023-06",
-    # "CC-MAIN-2022-49",
-    # "CC-MAIN-2022-40",
-    # "CC-MAIN-2022-33",
-    # "CC-MAIN-2022-27",
-    # "CC-MAIN-2022-21",
-    # "CC-MAIN-2022-05",
-    # "CC-MAIN-2021-49",
-    # "CC-MAIN-2021-43",
-    # "CC-MAIN-2021-39",
-    # "CC-MAIN-2021-31",
-    # "CC-MAIN-2021-25",
-    # "CC-MAIN-2021-21",
-    # "CC-MAIN-2021-17",
-    # "CC-MAIN-2021-10",
-    # "CC-MAIN-2021-04",
+    "CC-MAIN-2023-50",
+    "CC-MAIN-2023-40",
+    "CC-MAIN-2023-23",
+    "CC-MAIN-2023-14",
+    "CC-MAIN-2023-06",
+    "CC-MAIN-2022-49",
+    "CC-MAIN-2022-40",
+    "CC-MAIN-2022-33",
+    "CC-MAIN-2022-27",
+    "CC-MAIN-2022-21",
+    "CC-MAIN-2022-05",
+    "CC-MAIN-2021-49",
+    "CC-MAIN-2021-43",
+    "CC-MAIN-2021-39",
+    "CC-MAIN-2021-31",
+    "CC-MAIN-2021-25",
+    "CC-MAIN-2021-21",
+    "CC-MAIN-2021-17",
+    "CC-MAIN-2021-10",
+    "CC-MAIN-2021-04",
 
-    # "auto_math_text",
-    # "khanacademy",
-    # "openstax",
-    # "stanford",
-    # "web_sample",
-    # "wikihow",
+    "auto_math_text",
+    "khanacademy",
+    "openstax",
+    "stanford",
+    "web_sample",
+    "wikihow",
 ]
 
 datasets = []
@@ -78,8 +78,8 @@ for dataname in datanames:
     datasets.append(dataset)
 
 datanames = [
-    # "vietgpt/goat",
-    # "vietgpt/no_robots",
+    "vietgpt/goat",
+    "vietgpt/no_robots",
     "vietgpt/legal_citation_dataset",
 ]
 
@@ -116,6 +116,7 @@ tokenized_datasets = raw_dataset.map(
     num_proc=args.num_proc,
     remove_columns=["text"],
     load_from_cache_file=not args.overwrite_cache,
+    cache_file_name='./cache/dataset-tokenized',
     desc="Running tokenizer on dataset",
 )
 
@@ -138,6 +139,7 @@ lm_datasets = tokenized_datasets.map(
     batched=True,
     num_proc=args.num_proc,
     load_from_cache_file=not args.overwrite_cache,
+    cache_file_name=f'./cache/dataset-grouped-{block_size}',
     desc=f"Grouping texts in chunks of {block_size}",
 )
 
