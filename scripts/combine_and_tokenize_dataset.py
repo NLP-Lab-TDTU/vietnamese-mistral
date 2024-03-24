@@ -5,7 +5,7 @@ from itertools import chain
 from argparse import ArgumentParser
 
 from transformers import AutoTokenizer
-from datasets import load_dataset, concatenate_datasets
+from datasets import load_dataset, concatenate_datasets, DatasetDict
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -144,4 +144,8 @@ lm_datasets = tokenized_datasets.map(
 if os.path.exists(args.output_dir) and args.overwrite_cache:
     os.remove(args.output_dir)
 
-lm_datasets.save_to_disk(args.output_dir)
+dataset_dict = DatasetDict({
+    "train": lm_datasets
+})
+
+dataset_dict.save_to_disk(args.output_dir)
