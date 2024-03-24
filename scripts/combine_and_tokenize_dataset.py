@@ -116,7 +116,6 @@ tokenized_datasets = raw_dataset.map(
     num_proc=args.num_proc,
     remove_columns=["text"],
     load_from_cache_file=not args.overwrite_cache,
-    cache_file_name='./cache/dataset-tokenized',
     desc="Running tokenizer on dataset",
 )
 
@@ -139,7 +138,6 @@ lm_datasets = tokenized_datasets.map(
     batched=True,
     num_proc=args.num_proc,
     load_from_cache_file=not args.overwrite_cache,
-    cache_file_name=f'./cache/dataset-grouped-{block_size}',
     desc=f"Grouping texts in chunks of {block_size}",
 )
 
