@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export WANDB_MODE=offline
 export NUM_TRAIN_EPOCHS=2
 export WANDB_PROJECT=mistral-7b-hf-8k
 export MODEL_PATH=./init_model/vietnamese-mistral-7b
@@ -8,7 +9,7 @@ export SAVE_STEPS=1000
 export LOGGING_STEPS=100
 export DATASET_PATH=./processed_data
 
-deepspeed run_clm.py \
+deepspeed ./scripts/run_clm.py \
 --deepspeed ./configs/ds_config_zero3.json \
 --model_name_or_path $MODEL_PATH \
 --per_device_train_batch_size 32 \
