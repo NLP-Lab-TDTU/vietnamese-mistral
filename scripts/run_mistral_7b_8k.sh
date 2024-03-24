@@ -12,12 +12,11 @@ export DATASET_PATH=./processed_data
 deepspeed ./scripts/run_clm.py \
 --deepspeed ./configs/ds_config_zero3.json \
 --model_name_or_path $MODEL_PATH \
---per_device_train_batch_size 32 \
+--per_device_train_batch_size 2 \
 --gradient_accumulation_steps 1 \
 --output_dir $OUTPUT_DIR \
 --bf16 \
 --do_train \
---do_eval false \
 --num_train_epochs $NUM_TRAIN_EPOCHS \
 --dataset_path $DATASET_PATH \
 --logging_steps $LOGGING_STEPS \
