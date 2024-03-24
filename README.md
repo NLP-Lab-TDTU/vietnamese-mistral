@@ -36,7 +36,7 @@ Login successful
 
 ### Download tokenizer and model
 
-Download tokenizer and model from Huggingface. All files will be saved at ./init_model .
+Download tokenizer and model from Huggingface, internet required. All files will be saved at ./init_model .
 
 ```bash
 bash scripts/download_tokenizer.sh
@@ -46,7 +46,7 @@ bash scripts/download_model.sh
 
 ## Step 1. Download dataset
 
-Download datasets from Huggingface. All datasets will be saved at ./data .
+Download datasets from Huggingface, internet required. All datasets will be saved at ./data .
 
 ```bash
 bash scripts/download_datasets.sh
