@@ -1,0 +1,2 @@
+huggingface-hub==0.20.1
+hf_transfer==0.1.6
